@@ -2,8 +2,8 @@ version: 1
 title: "Tutorial: Your First Code Review"
 repository: "starbase-app/starbase-tutorial"
 commits:
-  initial: "<sha-A>"
-  rework: "<sha-B>"
+  initial: "d92871efa591a93dc45826a7074f9d60a9b854e9"
+  rework: "43ffd09e5a96cdcaeaaddd5b8ec81850b9a83c72"
 steps:
   - id: add_comment
     order: 1
