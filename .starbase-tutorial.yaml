@@ -1,0 +1,51 @@
+version: 1
+title: "Tutorial: Your First Code Review"
+repository: "starbase-app/starbase-tutorial"
+commits:
+  initial: "<sha-A>"
+  rework: "<sha-B>"
+steps:
+  - id: add_comment
+    order: 1
+    instruction: "Add a comment on line 5 of src/calculator.py noting the missing zero-division check."
+    hint: "Click the + icon in the gutter next to line 5 and type your comment."
+    expectedAction:
+      type: annotation
+      annotationType: comment
+      filePath: src/calculator.py
+    botResponse:
+      type: reply_annotation
+      body: "Good catch! I should definitely add a check for zero division."
+      delay: 2000
+
+  - id: add_defect
+    order: 2
+    instruction: "Add a defect on line 4 of src/utils.py for the off-by-one error in range_sum."
+    hint: "Click the + icon in the gutter, check 'Defect', and describe the bug."
+    expectedAction:
+      type: annotation
+      annotationType: defect
+      filePath: src/utils.py
+    botResponse:
+      type: transition_and_commit
+      replyBody: "You're right, that's a bug. Let me fix both issues."
+      delay: 3000
+
+  - id: review_rework
+    order: 3
+    instruction: "The author has submitted a rework. Click on the new commit column in the matrix to see the fixes."
+    hint: "A second column has appeared in the file matrix. Click on a cell in that column."
+    expectedAction:
+      type: select_commit
+    botResponse:
+      type: none
+
+  - id: approve_review
+    order: 4
+    instruction: "The code looks good now. Approve the review."
+    hint: "Click the 'Approve' button in the review header."
+    expectedAction:
+      type: approve
+    botResponse:
+      type: complete_tutorial
+      delay: 1000
