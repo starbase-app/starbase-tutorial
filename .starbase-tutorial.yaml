@@ -4,7 +4,7 @@ repository: starbase-app/starbase-tutorial
 
 commits:
   initial: "d92871e"
-  rework: "a1b2c3d"
+  rework: "43ffd09"
 
 steps:
   - id: step_1
@@ -28,7 +28,7 @@ steps:
 
   - id: step_3
     order: 3
-    instruction: "Add a comment on this file. Click the 'Comment' button and write your feedback."
+    instruction: "Add a comment on line 5 of src/calculator.py noting the missing zero-division check."
     hint: "Use the annotation toolbar to add a comment. Comments are for general feedback that don't require changes."
     expectedAction:
       type: annotation
@@ -41,12 +41,12 @@ steps:
 
   - id: step_4
     order: 4
-    instruction: "Now add a defect. Click the 'Defect' button to flag an issue that needs to be fixed."
+    instruction: "Add a defect on line 4 of src/utils.py for the off-by-one error in range_sum."
     hint: "Defects are issues that must be addressed before the code can be approved."
     expectedAction:
       type: annotation
       annotationType: defect
-      filePath: "src/calculator.py"
+      filePath: "src/utils.py"
     botResponse:
       type: reply
       replyBody: "Good catch! I'll fix that in the next commit."
