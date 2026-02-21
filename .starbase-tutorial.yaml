@@ -1,70 +1,80 @@
 version: 1
 title: "Tutorial: Your First Code Review"
-repository: "starbase-app/starbase-tutorial"
+repository: starbase-app/starbase-tutorial
+
 commits:
-  initial: "d92871efa591a93dc45826a7074f9d60a9b854e9"
-  rework: "43ffd09e5a96cdcaeaaddd5b8ec81850b9a83c72"
+  initial: "d92871e"
+  rework: "a1b2c3d"
+
 steps:
-  - id: start_reviewing
+  - id: step_1
     order: 1
     instruction: "Click the 'Start Reviewing' button to begin your code review."
-    hint: "The 'Start Reviewing' button is in the review header on the right."
+    hint: "The 'Start Reviewing' button is in the action bar at the top of the review."
     expectedAction:
       type: start_reviewing
     botResponse:
       type: none
 
-  - id: select_file
+  - id: step_2
     order: 2
     instruction: "Click on the calculator.py cell in the file matrix to view the changes."
-    hint: "Find src/calculator.py in the file list and click its cell under the commit column."
+    hint: "The file matrix shows which files were changed in each commit. Click the cell at the intersection of the commit and calculator.py."
     expectedAction:
       type: select_cell
-      filePath: src/calculator.py
+      filePath: "src/calculator.py"
     botResponse:
       type: none
 
-  - id: add_comment
+  - id: step_3
     order: 3
-    instruction: "Add a comment on line 5 of src/calculator.py noting the missing zero-division check."
-    hint: "Click the + icon in the gutter next to line 5 and type your comment."
+    instruction: "Add a comment on this file. Click the 'Comment' button and write your feedback."
+    hint: "Use the annotation toolbar to add a comment. Comments are for general feedback that don't require changes."
     expectedAction:
       type: annotation
       annotationType: comment
-      filePath: src/calculator.py
+      filePath: "src/calculator.py"
     botResponse:
-      type: reply_annotation
-      body: "Good catch! I should definitely add a check for zero division."
+      type: reply
+      replyBody: "Thanks for the feedback! I'll keep that in mind."
       delay: 2000
 
-  - id: add_defect
+  - id: step_4
     order: 4
-    instruction: "Add a defect on line 4 of src/utils.py for the off-by-one error in range_sum."
-    hint: "Click the + icon in the gutter, check 'Defect', and describe the bug."
+    instruction: "Now add a defect. Click the 'Defect' button to flag an issue that needs to be fixed."
+    hint: "Defects are issues that must be addressed before the code can be approved."
     expectedAction:
       type: annotation
       annotationType: defect
-      filePath: src/utils.py
+      filePath: "src/calculator.py"
     botResponse:
-      type: transition_and_commit
-      replyBody: "You're right, that's a bug. Let me fix both issues."
-      delay: 3000
+      type: reply
+      replyBody: "Good catch! I'll fix that in the next commit."
+      delay: 2000
 
-  - id: review_rework
+  - id: step_5
     order: 5
-    instruction: "The author has submitted a rework. Click on the new commit column in the matrix to see the fixes."
-    hint: "A second column has appeared in the file matrix. Click on a cell in that column."
+    instruction: "Request changes from the author. Open the action menu and select 'Request Changes'."
+    hint: "Click the dropdown arrow next to the action button and select 'Request Changes' to send the review back to the author."
+    expectedAction:
+      type: request_changes
+    botResponse:
+      type: none
+
+  - id: step_6
+    order: 6
+    instruction: "The author has submitted a rework commit. Click on the new commit in the matrix to review the changes."
+    hint: "A new column has appeared in the file matrix for the rework commit. Click on it to see what changed."
     expectedAction:
       type: select_commit
     botResponse:
       type: none
 
-  - id: approve_review
-    order: 6
-    instruction: "The code looks good now. Approve the review."
-    hint: "Click the 'Approve' button in the review header."
+  - id: step_7
+    order: 7
+    instruction: "The changes look good! Approve the review by clicking the 'Approve' button."
+    hint: "Click the 'Approve' button in the action bar to complete your review."
     expectedAction:
       type: approve
     botResponse:
-      type: complete_tutorial
-      delay: 1000
+      type: none
