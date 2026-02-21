@@ -1,7 +1,7 @@
 def range_sum(start, end):
     """Return the sum of all integers from start to end (inclusive)."""
     total = 0
-    for i in range(start, end):
+    for i in range(start, end + 1):
         total += i
     return total
 
