@@ -72,6 +72,15 @@ steps:
 
   - id: step_7
     order: 7
+    instruction: "Click 'Start Reviewing' to resume your review of the rework commit."
+    hint: "After rework is submitted, you need to start reviewing again before you can approve."
+    expectedAction:
+      type: start_reviewing
+    botResponse:
+      type: none
+
+  - id: step_8
+    order: 8
     instruction: "The changes look good! Approve the review by clicking the 'Approve' button."
     hint: "Click the 'Approve' button in the action bar to complete your review."
     expectedAction:
