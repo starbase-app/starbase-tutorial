@@ -5,8 +5,27 @@ commits:
   initial: "d92871efa591a93dc45826a7074f9d60a9b854e9"
   rework: "43ffd09e5a96cdcaeaaddd5b8ec81850b9a83c72"
 steps:
-  - id: add_comment
+  - id: start_reviewing
     order: 1
+    instruction: "Click the 'Start Reviewing' button to begin your code review."
+    hint: "The 'Start Reviewing' button is in the review header on the right."
+    expectedAction:
+      type: start_reviewing
+    botResponse:
+      type: none
+
+  - id: select_file
+    order: 2
+    instruction: "Click on the calculator.py cell in the file matrix to view the changes."
+    hint: "Find src/calculator.py in the file list and click its cell under the commit column."
+    expectedAction:
+      type: select_cell
+      filePath: src/calculator.py
+    botResponse:
+      type: none
+
+  - id: add_comment
+    order: 3
     instruction: "Add a comment on line 5 of src/calculator.py noting the missing zero-division check."
     hint: "Click the + icon in the gutter next to line 5 and type your comment."
     expectedAction:
@@ -19,7 +38,7 @@ steps:
       delay: 2000
 
   - id: add_defect
-    order: 2
+    order: 4
     instruction: "Add a defect on line 4 of src/utils.py for the off-by-one error in range_sum."
     hint: "Click the + icon in the gutter, check 'Defect', and describe the bug."
     expectedAction:
@@ -32,7 +51,7 @@ steps:
       delay: 3000
 
   - id: review_rework
-    order: 3
+    order: 5
     instruction: "The author has submitted a rework. Click on the new commit column in the matrix to see the fixes."
     hint: "A second column has appeared in the file matrix. Click on a cell in that column."
     expectedAction:
@@ -41,7 +60,7 @@ steps:
       type: none
 
   - id: approve_review
-    order: 4
+    order: 6
     instruction: "The code looks good now. Approve the review."
     hint: "Click the 'Approve' button in the review header."
     expectedAction:
